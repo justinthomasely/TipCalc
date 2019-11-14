@@ -1,0 +1,85 @@
+package Nov7;
+
+import java.util.Scanner; //Import Scanner
+
+public class TipCalcA {   //Class TipCalcA
+	public static void main(String[] args) //main method
+	    {
+	        System.out.println("Welcome to the J&J Tip Calculator! "); //Welcome user to program
+	        TipCalcB Calc = new TipCalcB(); 
+	        System.out.println("Please enter the total bill, including tax: "); //Total bill
+	        TipCalcB.calcBill();
+	        System.out.println("What percentage would you like to tip your server/bartender? "); //%%
+	        Calc.percTip();
+
+	    }
+
+	}
+
+
+
+
+
+
+
+
+package Nov7;
+
+import java.util.Scanner;
+
+public class TipCalcB { //Class TipCalcB
+	double split;
+	double splitPrompt;
+    double total;
+    double tip;
+    double Y;
+    double N;
+    double billPerPerson;
+    static double billAmount;
+
+        static Scanner scan = new Scanner(System.in);
+        
+        public static void calcBill() {
+             billAmount = scan.nextDouble();
+        }
+
+        public void percTip() {
+             tip = scan.nextDouble();
+             
+            if(tip<1) {
+                total = billAmount + tip;
+            }
+            
+        else total = billAmount + (tip/100)*billAmount;
+        System.out.println("Your total is: $" + total);
+        Split();
+        }
+
+
+        public void Split() 
+        {
+        System.out.println("Would you like to split the bill? ");
+        System.out.println("Enter 1 for yes or 0 for no: ");
+
+        splitPrompt = scan.nextDouble();
+        
+        if(splitPrompt == 0) {
+            System.out.println("Your total is: $" + total);
+            System.out.println("Thank you for using the J&J Tip Calculator!");
+            System.out.println("See you next time!");  
+        }
+        
+        if(splitPrompt == 1) {
+            System.out.println("How many ways would you like to split the bill? ");
+            splitPrompt = scan.nextDouble();
+            billPerPerson = total / splitPrompt;
+            System.out.println("Each person pays: $" + billPerPerson);
+            System.out.println("Thank you for using the J&J Tip Calculator!");
+            System.out.println("See you next time!");  
+        }
+        
+        else System.out.println("Invalid Entry");
+        }
+
+    }
+
